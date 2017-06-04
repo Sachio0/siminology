@@ -16,8 +16,17 @@ namespace spCenter
         }
         public IList ShopList()
         {
-            List<string> shopIds = dc.Select("select shop_id from shops");
+            List<int> shopIds = dc.Select("select shop_id from shops");
             return shopIds;
+        }
+        public void AddShop(string region)
+        {
+            int simplyValue = 0;
+            foreach(int item in ShopList())
+            {
+                simplyValue = item + 1;
+            }
+            dc.insert("insert into shops values (" + simplyValue.ToString() + ", '" + region + "' )");
         }
     }
 }

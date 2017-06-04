@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Oracle.DataAccess.Client;
-using Oracle.DataAccess.Types;
 using System.Data;
 using System.Collections;
+using Oracle.ManagedDataAccess.Client;
+using Oracle.ManagedDataAccess.Types;
 
 namespace spCenter.DataBase
 {
@@ -47,13 +47,11 @@ namespace spCenter.DataBase
             }*/
             
         }
-        public List<string> Select(string qerry)
+        public List<int> Select(string qerry)
         {
-            List<string> selectList = new List<string>();
+            List<int> selectList = new List<int>();
             try
             {
-                
-
                 conn = new OracleConnection();
                 conn.ConnectionString = oradb;
 
@@ -68,18 +66,38 @@ namespace spCenter.DataBase
                 dr = cmd.ExecuteReader();
 
                 for(int i = 0; dr.Read(); i++)
-                    selectList.Add(dr.GetString(0));
+                    selectList.Add(dr.GetInt32(0));
                 conn.Close();
             }
             catch (Exception ex)
             {
-               
+                ex.GetBaseException();
             }
             return selectList;
         }
-        public void insert(string querry)
+        public void insert(string qerry)
         {
+            try
+            {
+                conn = new OracleConnection();
+                conn.ConnectionString = oradb;
 
+                conn.Open();
+
+                cmd = conn.CreateCommand();
+
+
+                cmd.CommandText = qerry;
+
+
+                dr = cmd.ExecuteReader();
+                conn.Close();
+
+            }
+            catch (Exception ex)
+            {
+                ex.GetBaseException();
+            }
         }
     }
 }

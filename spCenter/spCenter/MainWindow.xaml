@@ -7,14 +7,14 @@
         xmlns:DV="clr-namespace:System.Windows.Controls.DataVisualization;assembly=System.Windows.Controls.DataVisualization.Toolkit"
         xmlns:DVC="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"
         mc:Ignorable="d"
-        Title="MainWindow" Height="493" Width="659">
+        Title="MainWindow" Height="404" Width="659">
     <Window.Background>
         <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
             <GradientStop Color="Black" Offset="1"/>
             <GradientStop Color="#FF3F6A00"/>
         </LinearGradientBrush>
     </Window.Background>
-    <Grid Margin="0,0,2,-7">
+    <Grid Name="myGrid" Margin="3,2,1,2">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
@@ -26,18 +26,38 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Button Name="addShop" Grid.Column="0" Grid.Row="0" Margin="10" Content="Dodaj sklep" Click="Button_Click"/>
-        <Button Name="delateShop" Grid.Column="0" Grid.Row="1" Margin="10" Content="Usuń sklep"/>
-        <Button Name="addPoruct"  Grid.Column="0" Grid.Row="2" Margin="10" Content="Dodaj produkt"/>
-        <Button Name="deleteProduct" Grid.Column="0" Grid.Row="3" Margin="10" Content="Uauń produkt" Click="Button_Click_1"/>
-        <Button Name="showChart" Grid.Column="0" Grid.Row="4" Margin="10" Content="Pokaż wykres"/>
-        <ComboBox Name="shopList" Margin="10,25,10,30" Grid.Row="5" />
-        <TextBox Grid.Column="2" Grid.Row="0" Name="txbox"/>
-        <DVC:Chart Grid.Column="2" Grid.RowSpan="6">
+        <Button Name="addShop" Grid.Column="0" Grid.Row="0" Margin="10" Content="Dodaj sklep" Click="AddShop_Click"/>
+        <Button Name="delateShop" Grid.Column="0" Grid.Row="1" Margin="10" Content="Usuń sklep" Click="delateShop_Click"/>
+        <Button Name="addPoruct"  Grid.Column="0" Grid.Row="2" Margin="10" Content="Dodaj produkt" Click="addPoruct_Click"/>
+        <Button Name="deleteProduct" Grid.Column="0" Grid.Row="3" Margin="10" Content="Usuń produkt" Click="deleteProduct_Click"/>
+        <Button Name="showChart" Grid.Column="0" Grid.Row="4" Margin="10" Content="Pokaż wykres" Click="ShowChart_Click"/>
 
-        </DVC:Chart>
 
+        <TextBox Name="tbox_as" Grid.Column="1" Grid.Row="0" Margin="10,30,10,15" Visibility="Hidden"/>
+        <Label Name="Label_as" Grid.Column="1" Grid.Row="0" Margin="10,5,10,40" Content="Region" HorizontalAlignment="Center" Visibility="Hidden"/>
+        
+        <ComboBox Name="shopList_ds" Margin="10,45,10,10" Grid.Row="1" Grid.Column="1" Visibility="Hidden"/>
+        <Label Name="Label_ds" Grid.Column="1" Grid.Row="1" Margin="10,10,10,35" Content="lista sklepów" Foreground="Black" HorizontalAlignment="Center" Visibility="Hidden"/>
+        
+        <ComboBox Name="shopList_ap" Margin="10,45,10,10" Grid.Row="2" Grid.Column="1" Visibility="Hidden"/>
+        <Label Name="Label_ap" Grid.Column="1" Grid.Row="2" Margin="10,10,10,35" Content="lista sklepów" Foreground="Black" HorizontalAlignment="Center" Visibility="Hidden"/>
+        <TextBox Name="tbox_ap" Grid.Column="2" Grid.Row="2" Margin="10,10,10,40" Visibility="Hidden"/>
+        <Label Name="Label_ap_up" Grid.Column="2" Grid.Row="1" Margin="10,50,10,-10" Content="nazwa produktu" Visibility="Hidden" HorizontalAlignment="Center"/>
+
+        <ComboBox Name="shopList_dp" Margin="10,45,10,10" Grid.Row="3" Grid.Column="1" Visibility="Hidden"/>
+        <TextBox Name="tbox_dp" Grid.Column="2" Grid.Row="3" Margin="10,10,10,40" Visibility="Hidden"/>
+        <Label Name="Label_dp" Grid.Column="1" Grid.Row="3" Margin="10,10,10,35" Content="lista sklepów" Foreground="Black" HorizontalAlignment="Center" Visibility="Hidden"/>
+        <Label Name="Label_dp_up" Grid.Column="2" Grid.Row="2" Margin="10,50,10,-10" Content="nazwa produktu" Visibility="Hidden" HorizontalAlignment="Center"/>
+
+        <ComboBox Name="shopList_sc" Margin="10,45,10,10" Grid.Row="4" Grid.Column="1" Visibility="Hidden"/>
+        <Label Name="Label_dp_sc" Grid.Column="1" Grid.Row="4" Margin="10,10,10,35" Content="lista sklepów" Foreground="Green" HorizontalAlignment="Center" Visibility="Hidden"/>
+
+        <Button Name="check_as" Grid.Column="2" Grid.Row="0" Margin="10,20" Content="Zatwierdź" Visibility="Hidden" Click="check_as_Click"/>
+        <Button Name="check_ds" Grid.Column="2" Grid.Row="1" Margin="10,20" Content="Zatwierdź" Visibility="Hidden" Click="check_ds_Click"/>
+        <Button Name="check_ap" Grid.Column="2" Grid.Row="2" Margin="10,40,10,10" Content="Zatwierdź" Visibility="Hidden" Click="check_ap_Click"/>
+        <Button Name="check_dp" Grid.Column="2" Grid.Row="3" Margin="10,40,10,10" Content="Zatwierdź" Visibility="Hidden" Click="check_dp_Click"/>
+        <Button Name="check_sc" Grid.Column="2" Grid.Row="4" Margin="10,20" Content="pokaż" Visibility="Hidden" Click="check_sc_Click"/>
+        
     </Grid>
 </Window>
