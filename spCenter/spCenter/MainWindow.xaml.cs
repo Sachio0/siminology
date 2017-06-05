@@ -54,7 +54,7 @@ namespace spCenter
             invisbleObj.Push(check_dp);
             invisbleObj.Push(check_sc);
             invisbleObj.Push(tbox_ap);
-            invisbleObj.Push(tbox_dp);
+            invisbleObj.Push(productList_dp);
             invisbleObj.Push(Label_ap_up);
             invisbleObj.Push(Label_dp_up);
             
@@ -70,7 +70,7 @@ namespace spCenter
         private void AddShop_Click(object sender, RoutedEventArgs e)
         {
 
-            //sch.AddShop(tbox.Text);   do chcek()
+            
             HiddenAll();
             tbox_as.Visibility = Visibility.Visible;
             Label_as.Visibility = Visibility.Visible;
@@ -82,6 +82,12 @@ namespace spCenter
             shopList.Items.Clear();
             foreach(var item in sch.ShopList())
                 shopList.Items.Add(item);
+        }
+        private void ShowProduct (ComboBox productList)
+        {
+            productList.Items.Clear();
+            foreach (var item in sch.ProductName())
+                productList.Items.Add(item);
         }
 
         private void ShowChart_Click(object sender, RoutedEventArgs e)
@@ -101,32 +107,42 @@ namespace spCenter
             ShowShop(shopList_ds);
             check_ds.Visibility = Visibility.Visible;
             
+            
         }
 
         private void check_as_Click(object sender, RoutedEventArgs e)
         {
-
+            if (tbox_as.Text != null)
+                sch.AddShop(tbox_as.Text);
+            HiddenAll();
         }
 
         private void check_ds_Click(object sender, RoutedEventArgs e)
         {
-
+            if(shopList_ds != null)
+                sch.DeleteShop(shopList_ds.Text);
+            HiddenAll();
         }
 
         private void check_ap_Click(object sender, RoutedEventArgs e)
         {
-            if(tbox_dp.Text != null)
-                sch.AddShop(tbox_ap.Text);
+            if(shopList_ap.Text != null && tbox_ap != null)
+                sch.AddProduct(shopList_ap.Text, tbox_ap.Text);
+            HiddenAll();
         }
-
+        private bool ValueInList(List<string> list, string value)
+        {
+           list
+        }
         private void check_dp_Click(object sender, RoutedEventArgs e)
         {
-
+            if(sch.ProductName().)
+            HiddenAll();
         }
 
         private void check_sc_Click(object sender, RoutedEventArgs e)
         {
-
+            HiddenAll();
         }
 
         private void deleteProduct_Click(object sender, RoutedEventArgs e)
@@ -134,10 +150,11 @@ namespace spCenter
             HiddenAll();
             Label_dp.Visibility = Visibility.Visible;
             Label_dp_up.Visibility = Visibility.Visible;
-            tbox_dp.Visibility = Visibility.Visible;
+            productList_dp.Visibility = Visibility.Visible;
             check_dp.Visibility = Visibility.Visible;
             shopList_dp.Visibility = Visibility.Visible;
             ShowShop(shopList_dp);
+            ShowProduct(productList_dp);
         }
 
         private void addPoruct_Click(object sender, RoutedEventArgs e)
@@ -151,5 +168,7 @@ namespace spCenter
             ShowShop(shopList_ap);
 
         }
+
+        
     }
 }

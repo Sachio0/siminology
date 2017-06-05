@@ -47,7 +47,7 @@ namespace spCenter.DataBase
             }*/
             
         }
-        public List<int> Select(string qerry)
+        public List<int> Select(string querry)
         {
             List<int> selectList = new List<int>();
             try
@@ -60,7 +60,7 @@ namespace spCenter.DataBase
                 cmd = conn.CreateCommand();
 
 
-                cmd.CommandText = qerry;
+                cmd.CommandText = querry;
 
 
                 dr = cmd.ExecuteReader();
@@ -75,7 +75,35 @@ namespace spCenter.DataBase
             }
             return selectList;
         }
-        public void insert(string qerry)
+        public List<string> SelectString(string querry)
+        {
+            List<string> selectList = new List<string>();
+            try
+            {
+                conn = new OracleConnection();
+                conn.ConnectionString = oradb;
+
+                conn.Open();
+
+                cmd = conn.CreateCommand();
+
+
+                cmd.CommandText = querry;
+
+
+                dr = cmd.ExecuteReader();
+
+                for (int i = 0; dr.Read(); i++)
+                    selectList.Add(dr.GetString(0));
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                ex.GetBaseException();
+            }
+            return selectList;
+        }
+        public void Insert(string querry)
         {
             try
             {
@@ -87,7 +115,7 @@ namespace spCenter.DataBase
                 cmd = conn.CreateCommand();
 
 
-                cmd.CommandText = qerry;
+                cmd.CommandText = querry;
 
 
                 dr = cmd.ExecuteReader();
@@ -99,5 +127,30 @@ namespace spCenter.DataBase
                 ex.GetBaseException();
             }
         }
+        public void Delete(string querry)
+        {
+            try
+            {
+                conn = new OracleConnection();
+                conn.ConnectionString = oradb;
+
+                conn.Open();
+
+                cmd = conn.CreateCommand();
+
+
+                cmd.CommandText = querry;
+
+
+                dr = cmd.ExecuteReader();
+                conn.Close();
+
+            }
+            catch (Exception ex)
+            {
+                ex.GetBaseException();
+            }
+        }
+        
     }
 }
