@@ -32,7 +32,7 @@
         <Button Name="delateShop" Grid.Column="0" Grid.Row="1" Margin="10" Content="Usuń sklep" Click="delateShop_Click" Grid.ColumnSpan="2"/>
         <Button Name="addPoruct"  Grid.Column="0" Grid.Row="2" Margin="10" Content="Dodaj produkt" Click="addPoruct_Click" Grid.ColumnSpan="2"/>
         <Button Name="deleteProduct" Grid.Column="0" Grid.Row="3" Margin="10" Content="Usuń produkt" Click="deleteProduct_Click" Grid.ColumnSpan="2"/>
-        <Button Name="showChart" Grid.Column="0" Grid.Row="4" Margin="10" Content="Pokaż wykres" Click="ShowChart_Click" Grid.ColumnSpan="2"/>
+        <Button Name="showChart" Grid.Column="0" Grid.Row="4" Margin="10" Content="Pokaż wykres" Click="ShowChart_Click" Grid.ColumnSpan="2" Visibility="Hidden"/>
 
 
         <TextBox Name="tbox_as" Grid.Column="2" Grid.Row="0" Margin="10,30,10,15" Visibility="Hidden"/>
@@ -60,5 +60,43 @@
         <Button Name="check_dp" Grid.Column="3" Grid.Row="3" Margin="10,40,10,10" Content="Zatwierdź" Visibility="Hidden" Click="check_dp_Click"/>
         <Button Name="check_sc" Grid.Column="3" Grid.Row="4" Margin="10,20" Content="pokaż" Visibility="Hidden" Click="check_sc_Click"/>
 
+        <Grid Name="myChart"  Grid.Column="2" Grid.Row="0" Grid.RowSpan="4" Grid.ColumnSpan="2" Visibility="Hidden">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Name="c0" Width="*"/>
+                <ColumnDefinition Name="c1" Width="*"/>
+                <ColumnDefinition Name="c2" Width="*"/>
+                
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Name="r0" Height="*"/>
+                <RowDefinition Name="r1" Height="*"/>
+                <RowDefinition Name="r2" Height="*"/>
+                <RowDefinition Name="r3" Height="*"/>
+                <RowDefinition Name="r4" Height="*"/>
+                <RowDefinition Name="r5" Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Name="tb00" Grid.Column="0" Grid.Row="0"/>
+            <TextBlock Name="tb01" Grid.Column="0" Grid.Row="1"/>
+            <TextBlock Name="tb02" Grid.Column="0" Grid.Row="2"/>
+            <TextBlock Name="tb03" Grid.Column="0" Grid.Row="3"/>
+            <TextBlock Name="tb04" Grid.Column="0" Grid.Row="4"/>
+            <TextBlock Name="tb05" Grid.Column="0" Grid.Row="5"/>
+            <TextBlock Name="tb10" Grid.Column="1" Grid.Row="0"/>
+            <TextBlock Name="tb11" Grid.Column="1" Grid.Row="1"/>
+            <TextBlock Name="tb12" Grid.Column="1" Grid.Row="2"/>
+            <TextBlock Name="tb13" Grid.Column="1" Grid.Row="3"/>
+            <TextBlock Name="tb14" Grid.Column="1" Grid.Row="4"/>
+            <TextBlock Name="tb15" Grid.Column="1" Grid.Row="5"/>
+            <TextBlock Name="tb20" Grid.Column="2" Grid.Row="0"/>
+            <TextBlock Name="tb21" Grid.Column="2" Grid.Row="1"/>
+            <TextBlock Name="tb22" Grid.Column="2" Grid.Row="2"/>
+            <TextBlock Name="tb23" Grid.Column="2" Grid.Row="3"/>
+            <TextBlock Name="tb24" Grid.Column="2" Grid.Row="4"/>
+            <TextBlock Name="tb25" Grid.Column="2" Grid.Row="5"/>
+        </Grid>
+            
+        
+            
+        
     </Grid>
 </Window>

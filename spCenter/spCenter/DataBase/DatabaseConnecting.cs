@@ -75,6 +75,34 @@ namespace spCenter.DataBase
             }
             return selectList;
         }
+        public List<int> SelectInt(string querry)
+        {
+            List<int> selectList = new List<int>();
+            try
+            {
+                conn = new OracleConnection();
+                conn.ConnectionString = oradb;
+
+                conn.Open();
+
+                cmd = conn.CreateCommand();
+
+
+                cmd.CommandText = querry;
+
+
+                dr = cmd.ExecuteReader();
+
+                for (int i = 0; dr.Read(); i++)
+                    selectList.Add(dr.GetInt32(3));
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                ex.GetBaseException();
+            }
+            return selectList;
+        }
         public List<string> SelectString(string querry)
         {
             List<string> selectList = new List<string>();
@@ -93,7 +121,7 @@ namespace spCenter.DataBase
 
                 dr = cmd.ExecuteReader();
 
-                for (int i = 0; dr.Read(); i++)
+                while (dr.Read())
                     selectList.Add(dr.GetString(0));
                 conn.Close();
             }

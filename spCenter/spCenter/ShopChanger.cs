@@ -44,7 +44,7 @@ namespace spCenter
         public void DeleteProduct(string name)
         {
 
-            dc.Delete("delete form product where product_name =" + name);
+            dc.Delete("delete from product where product_name = '" + name + "'");
         }
         private IList ProductList()
         {
@@ -63,5 +63,12 @@ namespace spCenter
             return prodNames;
 
         }
+        public IList ShopIn()
+        {
+            List<int> prodNames = dc.Select("select shop_in from product");
+            return prodNames;
+
+        }
+        
     }
 }

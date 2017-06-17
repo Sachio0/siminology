@@ -16,6 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Oracle.ManagedDataAccess.Client;
 using Oracle.ManagedDataAccess.Types;
+using System.Windows.Controls.DataVisualization.Charting;
 
 namespace spCenter
 {
@@ -27,12 +28,17 @@ namespace spCenter
         
         ShopChanger sch;
         Stack<Control> invisbleObj;
+        List<TextBlock> tblist0;
+        List<TextBlock> tblist1;
+        List<TextBlock> tblist2;
+
         public MainWindow()
         {
             
             InitializeComponent();
             sch = new ShopChanger();
             InvisibleObjectStack();
+            
             
         }
         private void InvisibleObjectStack()
@@ -66,6 +72,28 @@ namespace spCenter
                 item.Visibility = Visibility.Hidden;
             }
         }
+        private void TbToList()
+        {
+            tblist0.Add(tb00);
+            tblist0.Add(tb01);
+            tblist0.Add(tb02);
+            tblist0.Add(tb03);
+            tblist0.Add(tb04);
+            tblist0.Add(tb05);
+            tblist1.Add(tb10);
+            tblist1.Add(tb11);
+            tblist1.Add(tb12);
+            tblist1.Add(tb13);
+            tblist1.Add(tb14);
+            tblist1.Add(tb15);
+            tblist2.Add(tb20);
+            tblist2.Add(tb21);
+            tblist2.Add(tb22);
+            tblist2.Add(tb23);
+            tblist2.Add(tb24);
+            tblist2.Add(tb25);
+
+        }
         
         private void AddShop_Click(object sender, RoutedEventArgs e)
         {
@@ -89,6 +117,7 @@ namespace spCenter
             foreach (var item in sch.ProductName())
                 productList.Items.Add(item);
         }
+       
 
         private void ShowChart_Click(object sender, RoutedEventArgs e)
         {
@@ -96,6 +125,7 @@ namespace spCenter
             shopList_sc.Visibility = Visibility.Visible;
             Label_dp_sc.Visibility = Visibility.Visible;
             check_sc.Visibility = Visibility.Visible;
+            myChart.Visibility = Visibility.Visible;
             ShowShop(shopList_sc);
         }
 
@@ -130,19 +160,26 @@ namespace spCenter
                 sch.AddProduct(shopList_ap.Text, tbox_ap.Text);
             HiddenAll();
         }
-        private bool ValueInList(List<string> list, string value)
+        private bool ValueInProdList(string value)
         {
-           list
+            if(sch.ProductNamewhere(shopList_dp.Text).Contains(value))
+                return true;
+            else
+                return false;
+
         }
         private void check_dp_Click(object sender, RoutedEventArgs e)
         {
-            if(sch.ProductName().)
+            if (ValueInProdList(productList_dp.Text) && shopList_dp != null && productList_dp != null)
+                sch.DeleteProduct(productList_dp.Text);
             HiddenAll();
         }
 
         private void check_sc_Click(object sender, RoutedEventArgs e)
         {
             HiddenAll();
+            myChart.Visibility = Visibility.Visible;
+            TbToList();
         }
 
         private void deleteProduct_Click(object sender, RoutedEventArgs e)
